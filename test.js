@@ -14,7 +14,17 @@ var foo = function() {
 }
 
 var p = console.log;
-f = foo(); f.print();
-f.add(); f.print();
-f.ten(); f.print();
-f.add(); f.print();
+//f = foo(); f.print(); f.add(); f.print(); f.ten(); f.print(); f.add(); f.print();
+
+function fact(n, r) {
+  if (n === 1) {
+    p(r); 
+    return 1;
+  }
+  else {
+    r.push(n);
+    return (n * fact(n-1, r))
+  }
+}
+
+p(fact(5, []));
