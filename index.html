@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style> 
-    div { color:black; } 
+  <style>
+    div { color:white; }
     img { padding:1px; }
     body {
+      background: black;
       font-family: "Times New Roman", Arial, sans-serif;
       font-size: 20px;
       line-height: 1.0;
-      color: #F6E6CC;
+      color: white;
       position: relative;
       padding: 0 10px;
     }
-    #console { padding: 0; line-height: 1.0;}
+    #board {
+      height: 400px;
+      left: 50%;
+      margin: 50px 0 0 -170px;
+      position: absolute;
+      top: 50%;
+      width: 440px;
+    }
+    #console {
+      padding: 0;
+      line-height: 1.0;
+      text-align: center;
+      font: 100 4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    #legend {
+      padding: 0;
+      line-height: 1.0;
+      text-align: center;
+      font-size: 20px;
+    }
   </style>
-  <script src="http://code.jquery.com/jquery-git.js"></script>
+  <script src="jquery-1.6.2.min.js"></script>
+  <script src="raphael-min.js"></script>
   <script src="underscore.js"></script>
   <script src="8queens.js"></script>
   <script src="logic.js"></script>
 </head>
 <body>
-  <div id="app">
-    <div id="console"> </div>
+  <div id="board"></div>
+  <div id="console">
+    <div id="legend"> (# of queens : # of solutions : # of movements)</div>
+    <span id="nqueens"></span>:<span id="solutions"></span>:<span id="movements"></span>
   </div>
 </body>
 </html>

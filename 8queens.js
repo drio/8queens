@@ -64,23 +64,23 @@ var queens = {
         cc = _.indexOf(board[cr], 1);
         n_queens -= 1;
       },
-      matrix: function() {
-        var nb = []
-        for (var r=0; r<bs; r++) {
-          nb[r] = new Array(bs);
-          for (var c=0; c < bs; c++) nb[r][c] = board[r][c];
-        }
-        return nb;
+      current: function() {
+        var cq = []; // cq: current queens
+        for (var r=0; r<bs; r++)
+          for (var c=0; c < bs; c++)
+            if (board[r][c] == 1) cq.push([c+1, r+1]);
+        return cq;
       }
     }
   },
-  bt:  function(b, solutions) {
-    if (!b.is_valid()) { return } ;
-    if (b.is_solution()) { solutions.push(b.matrix()); return; }
+  // board object, array to store solutions, callback valid, callback solution
+  bt:  function(b, cb_valid, cb_solution) {
+    if (!b.is_valid()) { cb_valid(b.current()); return; } ;
+    if (b.is_solution()) { cb_solution(b.current()); return; }
 
     b.add_queen();
     while (b.can_move_right()) {
-      queens.bt(b, solutions);
+      queens.bt(b, cb_valid, cb_solution);
       b.next();
     }
     b.level_down();
