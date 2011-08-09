@@ -2,7 +2,7 @@ GIST=1097480
 PWD=$(shell pwd)
 URL=http://is04607.com/tmp/coverage.$(GIST)
 RDIR="public_html/tmp/8queens"
-GOOGL=http://goo.gl/FAlbO
+GOOGL=http://goo.gl/3oGir
 
 PWD=$(shell pwd)
 
